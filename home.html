@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="utf-8">
+   <script>
+      const apiKey = "348344aa646845d9b6d35863364e698c";
+
+   </script>
+   <script type="text/javascript" src="jquery.js">
+   </script>
+   <script type="text/javascript" src="jquery-ui.min.js">
+   </script>
+   <script type="text/javascript" src="bootstrap.min.js">
+   </script>
+   <script type="text/javascript" src="Customjs.js">
+   </script>
+   <script type="text/javascript" src="contactform.js">
+   </script>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>
+      PORTAL GAMES
+   </title>
+
+   <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+   <script type="text/javascript" src="totop.js">
+   </script>
+</head>
+
+<body class="Home">
+   <div id="ttr_page" class="container">
+      <nav id="ttr_menu" class="navbar-default navbar">
+         <div id="ttr_menu_inner_in">
+            <div class="menuforeground">
+            </div>
+            <div id="navigationmenu">
+               <div class="navbar-header">
+                  <button id="nav-expander" data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle"
+                     type="button">
+                     <span class="sr-only">
+                     </span>
+                     <span class="icon-bar">
+                     </span>
+                     <span class="icon-bar">
+                     </span>
+                     <span class="icon-bar">
+                     </span>
+                  </button>
+                  <p style="margin:0em 0em 0em 0em;text-align:Center;"><span
+                     style="font-family:'Titillium Web','Arial';font-weight:600;font-size:3.214em;color:rgb(255, 255, 255);">PORTAL GAMES</span></p>
+               </div>
+               <div class="menu-center collapse navbar-collapse">
+                  <ul class="ttr_menu_items nav navbar-nav navbar-right">
+                     <li class="ttr_menu_items_parent dropdown active"><a href="home.html"
+                           class="ttr_menu_items_parent_link_active"><span class="menuchildicon"></span>Home</a>
+                        <hr class="horiz_separator" />
+                     </li>
+                     <li class="ttr_menu_items_parent dropdown"><a href="pesquisa.html"
+                           class="ttr_menu_items_parent_link"><span class="menuchildicon"></span>Pesquisa</a>
+                        <hr class="horiz_separator" />
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </nav>
+      <div id="ttr_content_and_sidebar_container">
+         <div id="ttr_content">
+            <div id="ttr_content_margin" class="container-fluid">
+               <section class="row-games">
+                  <div class="col-12">
+                      <h1>Games</h1>
+      
+                      <div class="container-fluid">
+                          <div class="row" id="tela1">
+                          </div>
+                      </div>
+      
+                      <script>
+                          fetch ('https://api.rawg.io/api/games?key=348344aa646845d9b6d35863364e698c')
+                             .then(res => res.json ())
+                             .then(data => {
+                                  let str1 = ''
+                                  for (let i = 0; i < data.results.length; i++) {
+                                      let games= data.results[i]
+                                      str1 += `<div class="card col-md-2" width="0px" height="0px style="width: 18rem;">
+                                          <img src=${games.background_image} class="card-img-top" alt="...">
+                                          <div class="card-body">
+                                              <h5 class="card-title">${games.name}</h5>
+                                              <p class="card-text"> Data de Lançamento: ${games.released}</p>
+                                              <p class="card-text"> Rating: ${games.rating}</p>
+                                              <a href="https://rawg.io/games/${games.slug}" target="_blank" class="btn btn-secondary">Mais detalhes 
+                                          </div>
+                                          </div>`
+                                  }
+                                  document.getElementById('tela1').innerHTML = str1
+                             })
+                      </script>
+                  </div>
+               </div>
+            </div>
+              </section>
+
+      <footer id="ttr_footer">
+         <div class="ttr_footer_bottom_footer">
+            <div class="ttr_footer_bottom_footer_inner">
+               <div id="ttr_copyright">
+                  <a href="#">
+                     Ronildo Bartolomeu Gonçalves <br>
+                     Ciência da Computação<br>
+                     797520
+                  </a>
+               </div>
+            </div>
+         </div>
+      </footer>
+   </div>
+   <script type="text/javascript">
+      WebFontConfig = {
+         google: { families: ['Titillium+Web:600', 'Titillium+Web'] }
+      };
+      (function () {
+         var wf = document.createElement('script');
+         wf.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://ajax.googleapis.com/ajax/libs/webfont/1.0.31/webfont.js';
+         wf.type = 'text/javascript';
+         wf.async = 'true';
+         var s = document.getElementsByTagName('script')[0];
+         s.parentNode.insertBefore(wf, s);
+      })();
+   </script>
+</body>
+
+</html>
